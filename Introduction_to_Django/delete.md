@@ -1,3 +1,7 @@
-book = Book.objects.get(id=1)
+# Fetch the book instance you want to delete
+
+book = Book.objects.get(title="1984")
+
+# Delete it
+
 book.delete()
-Book.objects.all()

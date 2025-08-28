@@ -1,4 +1,8 @@
-book = Book.objects.get(id=1)
-book.title = "Nineteen Eighty-Four"
+# Fetch the book instance you want to update
+
+book = Book.objects.get(title="1984")
+
+# Update its author
+
+book.author = "George Orwell (Updated)"
 book.save()
-print(book.title)
