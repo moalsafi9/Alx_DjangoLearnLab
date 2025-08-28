@@ -1,7 +1,10 @@
-# Fetch the book instance you want to delete
+# Delete Operation
 
-book = Book.objects.get(title="1984")
+## Command:
 
-# Delete it
+```python
+from bookshelf.models import Book
 
+book = Book.objects.get(title="Nineteen Eighty-Four")
 book.delete()
+```
