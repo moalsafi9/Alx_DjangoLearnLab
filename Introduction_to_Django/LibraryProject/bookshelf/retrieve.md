@@ -1,16 +1,7 @@
-# Retrieve Operation (Bookshelf App)
+# Retrieve Operation
 
-This document explains how to perform the **Read / Retrieve** operation for the `Book` model in the `bookshelf` app.
-
----
-
-## Retrieve All Books
+## Command:
 
 ```python
-from bookshelf.models import Book
-
-# Get all books
-books = Book.objects.all()
-
-print(books)
+book = Book.objects.get(title="1984")
 ```
