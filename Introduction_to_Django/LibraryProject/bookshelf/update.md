@@ -1,8 +1,9 @@
-# Fetch the book instance you want to update
+# Update Operation
 
+## Command:
+
+```python
 book = Book.objects.get(title="1984")
-
-# Update its author
-
-book.author = "George Orwell (Updated)"
+book.title = "Nineteen Eighty-Four"
 book.save()
+```
