@@ -18,6 +18,14 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+    # ✅ Custom Permissions
+    class Meta:
+        permissions = [
+            ("can_add_book", "Can add book"),
+            ("can_change_book", "Can change book"),
+            ("can_delete_book", "Can delete book"),
+        ]
+
 
 class Library(models.Model):
     name = models.CharField(max_length=100)
@@ -35,7 +43,7 @@ class Librarian(models.Model):
         return self.name
 
 
-# ✅ New UserProfile for Role-Based Access Control
+# ✅ UserProfile for Role-Based Access Control
 class UserProfile(models.Model):
     ROLE_CHOICES = [
         ("Admin", "Admin"),
@@ -49,7 +57,7 @@ class UserProfile(models.Model):
         return f"{self.user.username} - {self.role}"
 
 
-# ✅ Signals to auto-create UserProfile on user creation
+# ✅ Signals to auto-create UserProfile
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
