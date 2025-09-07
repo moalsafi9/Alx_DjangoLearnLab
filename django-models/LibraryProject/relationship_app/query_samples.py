@@ -13,7 +13,7 @@ def run_queries():
     author_name = "J.K. Rowling"
     try:
         author = Author.objects.get(name=author_name)
-        books_by_author = Book.objects.filter(author=author)  # << required style
+        books_by_author = Book.objects.filter(author=author)  # required style
         print(f"Books by {author_name}: {[book.title for book in books_by_author]}")
     except Author.DoesNotExist:
         print(f"Author '{author_name}' not found.")
@@ -27,11 +27,11 @@ def run_queries():
     except Library.DoesNotExist:
         print(f"Library '{library_name}' not found.")
 
-    # 3. Retrieve the librarian for a library
+    # 3. Retrieve the librarian for a library (explicit get form)
     try:
-        librarian = library.librarian
+        librarian = Librarian.objects.get(library=library)  # required style
         print(f"Librarian for {library_name}: {librarian.name}")
-    except Exception:
+    except Librarian.DoesNotExist:
         print(f"No librarian assigned to {library_name}")
 
 
