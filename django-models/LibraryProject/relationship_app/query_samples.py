@@ -9,11 +9,11 @@ from relationship_app.models import Author, Book, Library, Librarian
 
 
 def run_queries():
-    # 1. Query all books by a specific author
+    # 1. Query all books by a specific author (explicit filter form)
     author_name = "J.K. Rowling"
     try:
         author = Author.objects.get(name=author_name)
-        books_by_author = author.books.all()
+        books_by_author = Book.objects.filter(author=author)  # << required style
         print(f"Books by {author_name}: {[book.title for book in books_by_author]}")
     except Author.DoesNotExist:
         print(f"Author '{author_name}' not found.")
@@ -31,8 +31,8 @@ def run_queries():
     try:
         librarian = library.librarian
         print(f"Librarian for {library_name}: {librarian.name}")
-    except Exception as e:
-        print(f"No librarian assigned to {library_name}: {e}")
+    except Exception:
+        print(f"No librarian assigned to {library_name}")
 
 
 if __name__ == "__main__":
